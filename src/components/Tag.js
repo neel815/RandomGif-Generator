@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import Spinner from './Spinner';
 
@@ -9,30 +9,34 @@ const Tag = () => {
   const [loading, setLoading] = useState(false);
   const [tag, setTag] = useState('');
 
-  async function fetchData() {
+  const fetchData = useCallback(async () => {
     setLoading(true);
-    const url = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&tag=${tag}`;
-    const { data } = await axios.get(url);
-    const imagesrc = data.data.images.downsized_large.url;
-    setGif(imagesrc);
-    setLoading(false);
-  }
+    try {
+      const url = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&tag=${tag}`;
+      const { data } = await axios.get(url);
+      const imagesrc = data.data.images.downsized_large.url;
+      setGif(imagesrc);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [tag, API_KEY]); 
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
-
-  function changeHandler(event) {
+  }, [fetchData]); 
+  const changeHandler = (event) => {
     setTag(event.target.value);
-  }
+  };
 
-  function clickHandler() {
+  const clickHandler = () => {
     fetchData();
-  }
+  };
 
   return (
     <div className="w-4/5 max-w-md bg-white shadow-md rounded-lg border border-gray-200 flex flex-col items-center gap-y-6 p-6">
-      <h1 className="text-xl font-semibold text-gray-700">Random {tag || "Tag"} Gif</h1>
+      <h1 className="text-xl font-semibold text-gray-700">Random {tag || 'Tag'} Gif</h1>
       {loading ? (
         <Spinner />
       ) : (
