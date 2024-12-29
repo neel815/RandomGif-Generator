@@ -21,11 +21,11 @@ const Tag = () => {
     } finally {
       setLoading(false);
     }
-  }, [tag, API_KEY]); 
-
+  }, [tag]); 
   useEffect(() => {
     fetchData();
-  }, [fetchData]); 
+  }, [fetchData]);
+
   const changeHandler = (event) => {
     setTag(event.target.value);
   };
