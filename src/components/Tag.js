@@ -20,7 +20,7 @@ const Tag = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   function changeHandler(event) {
     setTag(event.target.value);
