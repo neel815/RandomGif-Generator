@@ -2,18 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* css background-image generated using https://10015.io/tools/css-background-pattern-generator */
 .background {
-  background-image: radial-gradient(#ffffff 2.5px, transparent 2.5px), radial-gradient(#ffffff 2.5px, transparent 2.5px);
+  background-image:
+    radial-gradient(circle, #ffffff 2.5px, transparent 2.5px),
+    radial-gradient(circle, #ffffff 2.5px, transparent 2.5px);
   background-size: 36px 36px;
   background-position: 0 0, 18px 18px;
   background-color: #b1d2ff;
 }
 
-
-<div class="spinner"></div>
-
-<style>
 .spinner {
    width: 56px;
    height: 56px;
@@ -27,13 +24,13 @@
    grid-area: 1/1;
    border: 9px solid;
    border-radius: 50%;
-   border-color: #474bff #474bff #0000 #0000;
+   border-color: #474bff #474bff transparent transparent;
    mix-blend-mode: darken;
    animation: spinner-plncf9 1s infinite linear;
 }
 
 .spinner::after {
-   border-color: #0000 #0000 #dbdcef #dbdcef;
+   border-color: transparent transparent #dbdcef #dbdcef;
    animation-direction: reverse;
 }
 
