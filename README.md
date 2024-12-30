@@ -11,5 +11,5 @@ A simple React application that fetches and displays random GIFs using the Giphy
 ## **Tech Stack**
 - **Frontend**: React.js  
 - **Styling**: Tailwind CSS  
-- **API**: Giphy API  
+- **API**: [https://developers.giphy.com](https://developers.giphy.com)   
 - **Axios**: For HTTP requests  
